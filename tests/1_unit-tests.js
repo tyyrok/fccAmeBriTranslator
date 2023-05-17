@@ -5,16 +5,17 @@ const Translator = require('../components/translator.js');
 const translator = new Translator();
 
 suite('Unit Tests', () => {
+  
   test('#1 Translate Mangoes are my favorite fruit. to British English', (done) => {
     assert.include(translator.process('Mangoes are my favorite fruit.', 'american-to-british'), 
                   { text: 'Mangoes are my favorite fruit.',
-                    translation: 'Mangoes are my <span class="highlight">favourite</span> fruit.', });
+                    translation: "Mangoes are my <span class='highlight'>favourite</span> fruit.", });
     done();
   });
   test('#2 Translate I ate yogurt for breakfast. to British English', (done) => {
     assert.include(translator.process('I ate yogurt for breakfast.', 'american-to-british'), 
                   { text: 'I ate yogurt for breakfast.',
-                    translation: 'I ate <span class="highlight>yoghurt</span> for breakfast.', });
+                    translation: "I ate <span class='highlight'>yoghurt</span> for breakfast.", });
     done();
   });
   test("#3 Translate We had a party at my friend's condo. to British English", (done) => {
@@ -50,13 +51,13 @@ suite('Unit Tests', () => {
   test("#8 Translate No Mr. Bond, I expect you to die. to British English", (done) => {
     assert.include(translator.process("No Mr. Bond, I expect you to die.", 'american-to-british'), 
                   { text: "No Mr. Bond, I expect you to die.",
-                    translation: "No <span class='highlight'>Mr<span> Bond, I expect you to die.", });
+                    translation: "No <span class='highlight'>Mr</span> Bond, I expect you to die.", });
     done();
   });
   test("#9 Translate Dr. Grosh will see you now. to British English", (done) => {
     assert.include(translator.process("Dr. Grosh will see you now.", 'american-to-british'), 
                   { text: "Dr. Grosh will see you now.",
-                    translation: "<span class='highlight'>Dr<span> Grosh will see you now.", });
+                    translation: "<span class='highlight'>Dr</span> Grosh will see you now.", });
     done();
   });
   test("#10 Translate Lunch is at 12:15 today. to British English", (done) => {
@@ -80,7 +81,7 @@ suite('Unit Tests', () => {
   test("#13 Translate First, caramelise the onions. to American English", (done) => {
     assert.include(translator.process("First, caramelise the onions.", 'british-to-american'), 
                   { text: "First, caramelise the onions.",
-                    translation: "First, <span class='highlight'>caramelize</span> the onions", });
+                    translation: "First, <span class='highlight'>caramelize</span> the onions.", });
     done();
   });
   test("#14 Translate I spent the bank holiday at the funfair. to American English", (done) => {
@@ -92,13 +93,13 @@ suite('Unit Tests', () => {
   test("#15 Translate I had a bicky then went to the chippy. to American English", (done) => {
     assert.include(translator.process("I had a bicky then went to the chippy.", 'british-to-american'), 
                   { text: "I had a bicky then went to the chippy.",
-                    translation: "I had a <span class='highlight'>cookie</span> then went to the <span class='highlight'>fish-and-chip shop.</span>", });
+                    translation: "I had a <span class='highlight'>cookie</span> then went to the <span class='highlight'>fish-and-chip shop</span>.", });
     done();
   });
   test("#16 Translate I've just got bits and bobs in my bum bag. to American English", (done) => {
     assert.include(translator.process("I've just got bits and bobs in my bum bag.", 'british-to-american'), 
                   { text: "I've just got bits and bobs in my bum bag.",
-                    translation: "I've just got <span class='highlight'>odds and ends</span> in my <span class='highlight'>fanny pack.</span>", });
+                    translation: "I've just got <span class='highlight'>odds and ends</span> in my <span class='highlight'>fanny pack</span>.", });
     done();
   });
   test("#17 Translate The car boot sale at Boxted Airfield was called off. to American English", (done) => {
@@ -128,13 +129,13 @@ suite('Unit Tests', () => {
   test("#21 Highlight translation in Mangoes are my favorite fruit.", (done) => {
     assert.include(translator.process('Mangoes are my favorite fruit.', 'american-to-british'), 
                   { text: 'Mangoes are my favorite fruit.',
-                    translation: 'Mangoes are my <span class="highlight">favourite</span> fruit.', });
+                    translation: "Mangoes are my <span class='highlight'>favourite</span> fruit.", });
     done();
   });
   test("#22 Highlight translation in I ate yogurt for breakfast.", (done) => {
     assert.include(translator.process('I ate yogurt for breakfast.', 'american-to-british'), 
                   { text: 'I ate yogurt for breakfast.',
-                    translation: 'I ate <span class="highlight>yoghurt</span> for breakfast.', });
+                    translation: "I ate <span class='highlight'>yoghurt</span> for breakfast.", });
     done();
   });
   test("#23 Highlight translation in We watched the footie match for a while.", (done) => {
@@ -149,4 +150,5 @@ suite('Unit Tests', () => {
                     translation: "<span class='highlight'>Tylenol</span> takes up to an hour to work.", });
     done();
   });
+  
 });
