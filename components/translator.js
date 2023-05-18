@@ -7,8 +7,8 @@ class Translator {
   process(text, locale){
 
     let submitedText = text;
-    let spanStart = " <span class='highlight'>";
-    let spanEnd = "</span>"; 
+    let spanStart = ' <span class="highlight">';
+    let spanEnd = '</span>'; 
     let britishOnlyReversed = [];
 
     for (let key of Object.entries(britishOnly)) {
@@ -32,14 +32,15 @@ class Translator {
       
       for (let key of worldsListToBr){
         
-        let regex = new RegExp('[ ^]' + key[0] + '[ .]', 'ig');
+        //let regex = new RegExp('[ ^]' + key[0] + '[ .]', 'ig');
+        let regex = new RegExp('(' + key[0] + ')[ .]|( ' + key[0] + ')[ .]', 'ig');
         const matches = text.matchAll(regex);
         
         for (const match of matches) {
           //console.log("Match - " + match);
 
 
-          if (match.toString().match(/[.]$/)) {
+          if (match[0].toString().match(/[.]$/)) {
             
             text = text.replaceAll(regex, spanStart + key[1] + spanEnd + '.');
             
@@ -105,8 +106,8 @@ class Translator {
 
   titleChecker(text, locale){
 
-    let spanStart = " <span class='highlight'>";
-    let spanEnd = "</span> "; 
+    let spanStart = ' <span class="highlight">';
+    let spanEnd = '</span> '; 
     
     if (locale == 'american-to-british') {
 
@@ -149,8 +150,8 @@ class Translator {
   
   timeChecker(text, locale) {
 
-    let spanStart = "<span class='highlight'>";
-    let spanEnd = "</span>"; 
+    let spanStart = '<span class="highlight">';
+    let spanEnd = '</span>'; 
     
     if (locale == 'american-to-british') {
 

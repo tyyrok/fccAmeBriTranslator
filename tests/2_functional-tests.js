@@ -6,26 +6,30 @@ const server = require('../server.js');
 chai.use(chaiHttp);
 
 let Translator = require('../components/translator.js');
-/*
+
 suite('Functional Tests', function() {
   this.timeout(5000);
   test("#1 Translation with text and locale fields: POST request to /api/translate", (done) => {
     chai.request(server)
-        .post({
+        .post('/api/translate')
+        .send({
           text: 'Mangoes are my favorite fruit.',
           locale: 'american-to-british',
         })
         .end( (err, res) => {
+          if (err) console.log(err);
+          console.log(res.body);
           assert.equal(res.status, 200);
           assert.isObject(res.body);
           assert.include(res.body, { text: 'Mangoes are my favorite fruit.',
-                                     translation: 'Mangoes are my <span class="highlight">favourite</span> fruit.', })
+                                     translation: 'Mangoes are my <span class=\"highlight\">favourite</span> fruit.', })
           done();
         });
   });
   test("#2 Translation with text and invalid locale field: POST request to /api/translate", (done) => {
     chai.request(server)
-        .post({
+        .post('/api/translate')
+        .send({
           text: 'Mangoes are my favorite fruit.',
           locale: 'american-to-chinese',
         })
@@ -38,7 +42,8 @@ suite('Functional Tests', function() {
   });
   test("#3 Translation with missing text field: POST request to /api/translate", (done) => {
     chai.request(server)
-        .post({
+        .post('/api/translate')
+        .send({
           locale: 'american-to-british',
         })
         .end( (err, res) => {
@@ -50,7 +55,9 @@ suite('Functional Tests', function() {
   });
   test("#4 Translation with missing locale field: POST request to /api/translate", (done) => {
     chai.request(server)
-        .post({
+        .keepOpen()
+        .post('/api/translate')
+        .send({
           text: 'Mangoes are my favorite fruit.',
         })
         .end( (err, res) => {
@@ -62,7 +69,9 @@ suite('Functional Tests', function() {
   });
   test("#5 Translation with empty text: POST request to /api/translate", (done) => {
     chai.request(server)
-        .post({
+        .keepOpen()
+        .post('/api/translate')
+        .send({
           text: '',
           locale: 'american-to-british',
         })
@@ -75,7 +84,9 @@ suite('Functional Tests', function() {
   });
   test("#6 Translation with text that needs no translation: POST request to /api/translate", (done) => {
     chai.request(server)
-        .post({
+        .keepOpen()
+        .post('/api/translate')
+        .send({
           text: 'Hello!',
           locale: 'american-to-british',
         })
@@ -87,4 +98,3 @@ suite('Functional Tests', function() {
         });
   });
 });
-*/
